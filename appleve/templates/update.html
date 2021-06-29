@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="title">Atualizar cadastro</h1>
+<div class="field">
+  <a href="/" class="button is-success"> Todos os cadastros </a>
+</div>
+
+
+<div class="columns is-multiline">
+  <div class="column is-4">
+      <div class="card">
+          <div class="card-content">
+              <div class="media">
+                  <div class="media-content">
+
+                    {% if messages %}
+                        {% for msg in messages %}
+                          <p class="help is-success">{{msg}}</p> 
+                        {% endfor %}
+                    {% endif %}
+                    <form method="post" action="/update/{{updates.id}}">
+
+                      {% csrf_token %}
+
+                      <div class="field">
+                        <label class="label">Nome</label>
+                        <div class="control">
+                          <input class="input" type="text" placeholder="Nome Completo" name="nome" value="{{ updates.nome }}">
+                        </div>
+                      </div>
+                      
+                      <div class="field">
+                        <label class="label">Celular</label>
+                        <div class="control">
+                          <input class="input is-success" type="tel" placeholder="Telefone com DDD" name="fone" id="fone" value="{{ updates.fone }}">
+                        </div>
+                      </div>
+
+                      <div class="field">
+                        <label class="label">CPF</label>
+                        <div class="control">
+                          <input class="input is-warning" type="tel" placeholder="CPF - Apenas números" name="cpf" id="cpf" value="{{ updates.cpf }}">
+                        </div>
+                      </div>
+
+                      <script type="text/javascript">
+                        $(document).ready(function(){
+                          
+                          $(".curso").click(function(){
+                            var text = "";
+                            $(".curso:checked").each(function(){
+                              text+=$(this).val()+ ', ';
+                            });
+                            text=text.substring(0, text.length-1);
+                            $("#selectedtext").val(text);
+                          });
+                        });
+                              
+                      </script>
+
+                      <div class="field">
+                        <label class="label">Selecionar cursos</label>
+                        <div class="control">
+                          <label class="checkbox">
+                            <input type="checkbox" value="Python" class="curso">
+                            Python
+                          </label> <p>
+                          <label class="checkbox">
+                            <input type="checkbox" value="NodeJS" class ="curso">
+                            NodeJS
+                          </label> <p>
+                            <label class="checkbox">
+                              <input type="checkbox" value="VueJS" class ="curso">
+                              VueJS
+                            </label> <p>
+                            <label class="checkbox">
+                              <input type="checkbox" value="CSS" class="curso">
+                              CSS
+                            </label>
+                        </div>
+                        <div class="control">
+                          <input class="input is-link" type="text" placeholder="Cursos selecionados" id="selectedtext" name="cursoadd" value="{{ updates.cursoadd }}"> 
+                        </div>
+                      </div>
+                     <div class="field is-grouped">
+                        <div class="control">
+                          <button class="button is-link">Atualizar</button>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

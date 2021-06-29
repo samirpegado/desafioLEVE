@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DesafioLEVE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="/static/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a href="/" class="navbar-link">
+                <strong>DesafioLEVE</strong>
+              </a>
+      
+              <div class="navbar-dropdown">
+                <a href="/" class="navbar-item">
+                  Pessoas cadastradas
+                </a>
+                <a class="navbar-item">
+                  Cursos cadastrados
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+          <div class="navbar-item">
+            <div class="buttons">
+                <a href="/add" class="button is-info">
+                  <strong>Cadastrar pessoas</strong>
+                </a>
+              </div>
+          </div>
+        
+      </nav>
+
+    <!-- Importação JS -->
+
+    
+   
+
+
+    <section class="section">
+        
+        {% block content %}
+        {% endblock %}
+
+        
+
+        {% block scripts %}
+        
+      
+
+        <script src="{% static 'js/jquery.mask.min.js' %}"></script>
+
+        <script>
+          $(document).ready(function(){
+            
+            $("#cpf").mask("000.000.000-00");
+            $("#fone").mask("(00) 00000-0000");
+          })
+                
+        </script>
+
+        {% endblock %}
+
+    </section>
+</body>
+</html>
