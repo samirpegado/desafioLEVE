@@ -9,4 +9,4 @@ Adição, edição, remoção de dados (Nome, CPF, Celular) e seleção de curso
 *Python 3
 
 ## Demonstração de uso em produção
-$ python manage.py runserver
+https://desafiodjangoleve.herokuapp.com/
